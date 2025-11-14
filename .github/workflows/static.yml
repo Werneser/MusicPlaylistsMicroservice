@@ -12,6 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Run unit tests
+        run: ./gradlew test
+      - name: Run integration tests
+        run: ./gradlew integrationTest
       - name: Update Status Page
         run: |
           sed -i "s|id=\"unit-tests-status\">.*<|id=\"unit-tests-status\">${{ job.status }}<|" static/index.html
