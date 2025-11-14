@@ -1,0 +1,15 @@
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Run unit tests
+        run: ./gradlew test
+      - name: Run integration tests
+        run: ./gradlew integrationTest
